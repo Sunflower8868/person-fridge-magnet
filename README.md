@@ -20,12 +20,17 @@
 
 ## 安装
 
-将本仓库克隆或下载到你的 Agent 技能目录：
+本技能是**纯提示词型技能**（仅 `SKILL.md`，无脚本、无联网、无文件操作），可跨平台使用。
 
 ```bash
 # 豆包办公 / Doubao Work
 # 将整个 person-fridge-magnet 文件夹放入用户技能目录
 # 路径通常为：workspace/.user_skills/person-fridge-magnet/
+
+# WorkBuddy
+# 将整个 person-fridge-magnet 文件夹放入用户级技能目录
+# 路径：~/.workbuddy/skills/person-fridge-magnet/
+# Windows 实际路径示例：C:\Users\<用户名>\.workbuddy\skills\person-fridge-magnet\
 ```
 
 确保目录结构为：
@@ -34,6 +39,24 @@
 person-fridge-magnet/
 └── SKILL.md
 ```
+
+安装后**重启 / 刷新对话**以加载新技能。
+
+## 出图参数（WorkBuddy 已固化）
+
+在 WorkBuddy 中调用内置 ImageGen 图像生成工具，参数已实测验证，直接套用：
+
+| 参数 | 固定值 | 说明 |
+|---|---|---|
+| 调用方式 | 图生图 | 必须传入用户原图作为参考图 |
+| `input_fidelity` | `high` | 高保真，保证人物辨识度 |
+| `size` | `1024x1365` | 严格 3:4 竖版 |
+| `quality` | `high` | 保证刀模线与手写文字清晰 |
+| `background` | `opaque` | 纯白背景 |
+
+> 耗时主要在**图生图推理**（约 30–90 秒），与平台无关，属正常现象。
+
+`SKILL.md` 内已内置可填空的 Prompt 模板，无需每次重写长提示词。
 
 ## 使用
 
